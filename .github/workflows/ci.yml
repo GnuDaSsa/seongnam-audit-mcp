@@ -47,4 +47,6 @@ jobs:
       - name: 합성 자료로 검색·최종 검증·MCP 프로토콜 검사
         run: npm run test:ci
       - name: 독립 답변과 채점표 지문 대조
-        run: node answer-benchmark.mjs --check-freeze
+        run: |
+          node answer-benchmark.mjs --check-freeze
+          node answer-benchmark.mjs --suite final-v1 --check-freeze
