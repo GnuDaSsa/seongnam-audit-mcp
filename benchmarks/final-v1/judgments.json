@@ -1,0 +1,172 @@
+[
+  {
+    "id": "F01",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2382",
+        "category": "교육/문화",
+        "agency": "성남문화재단",
+        "year": 2018,
+        "location": "html:body",
+        "quote": "지원금 지급 시 독립영화 공모요강 중 성남시 촬영조건에 대한 확인을 소홀히 한 사실이 있다.",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2382"
+      }
+    ]
+  },
+  {
+    "id": "F02",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-1986",
+        "category": "민간위탁/지방보조",
+        "agency": "푸른도시사업소",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "단기근로자의 각종 수당을 지급함에 있어 소득세법에 의한 관련 세금(소득세, 주민세)을 납부하지 않았음에도 시정하지 않았으며",
+        "source_url": "https://www.seongnam.go.kr/pm030305/1986"
+      }
+    ]
+  },
+  {
+    "id": "F03",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2882",
+        "category": "일반행정",
+        "agency": "성남문화재단",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "인사위원회의 판단에 따라 징계의결 시마다 동일인에 대한 표창감경 반복이 가능한 것으로 해석할 여지가 있음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2882"
+      }
+    ]
+  },
+  {
+    "id": "F04",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2034",
+        "category": "도로/교통",
+        "agency": "차량등록사업소",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "정기검사를 받지 않아 타 기관에서 과태료 처분 요청한 자동차 2건에 대하여 과태료 ○○○천원을 부과하여야 함에도 미부과한 사실이 있음.",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2034"
+      }
+    ]
+  },
+  {
+    "id": "F05",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2835",
+        "category": "토지/지적",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "측량결과 분할점의 누락, 필지선을 붉은색으로 잘못 작도",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2835"
+      }
+    ]
+  },
+  {
+    "id": "F06",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2139",
+        "category": "경제",
+        "agency": "농업기술센터",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "심의표는 객관적 평가기준에 의한 항목별 평점점수 기준 없이 단순 순위만 기재하여 시범사업 농가를 선정",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2139"
+      }
+    ]
+  },
+  {
+    "id": "F07",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2965",
+        "category": "건설/산업",
+        "agency": "맑은물관리사업소",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "선금사용내역서를 제출받지 않고 준공 처리함.",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2965"
+      }
+    ]
+  },
+  {
+    "id": "F08",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2859",
+        "category": "주택/건축",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "표준건축비 기준이 아닌 건축공사 도급금액의 1퍼센트를 안전관리 예치금으로 예치",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2859"
+      }
+    ]
+  },
+  {
+    "id": "F09",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4676",
+        "category": "재산관리",
+        "agency": "수정구청",
+        "year": 2023,
+        "location": "html:body",
+        "quote": "등기촉탁대장도 소유자 통지연월일 및 반송연월일이 일부 누락하는 등",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4676"
+      }
+    ]
+  },
+  {
+    "id": "F10",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2919",
+        "category": "정보/통신",
+        "agency": "성남문화재단",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "개인영상정보 관리대장의 일부사항을 기록하고 관리하지 아니함",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2919"
+      }
+    ]
+  },
+  {
+    "id": "F11",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "F12",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "F13",
+    "kind": "out_of_scope",
+    "expected": []
+  },
+  {
+    "id": "F14",
+    "kind": "out_of_scope",
+    "expected": []
+  }
+]

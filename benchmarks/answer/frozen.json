@@ -1,0 +1,8 @@
+{
+  "algorithm": "SHA-256 of UTF-8 text with LF line endings, including trailing newline",
+  "sealed_at_kst": "2026-11-25T00:26:47+09:00",
+  "files": {
+    "questions.json": "80784c776b309e4ff20bb58967f234fbe5d4e2b6051bebf5d0811ac7271e6c8e",
+    "key.json": "40e54f6ce1378400140a4a1372058a4b6976ea2d06eff31403ef36b0d4f31f41"
+  }
+}

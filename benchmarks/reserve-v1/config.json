@@ -1,0 +1,33 @@
+{
+  "version": "city-retrieval-reserve-v1",
+  "k": 5,
+  "report_at": 3,
+  "hashes": {
+    "questions.json": "d5a3318c8e08a3f85f2dc5cc0faf067a543a451c77ec7ad9d921360c955c49eb",
+    "judgments.json": "9edf8a20545df9dca90eb01a167f67dc5052ca248e6fa74f2922d6874b8ab4e1"
+  },
+  "thresholds": {
+    "hitAt1": 0.5,
+    "hitAt3": 0.75,
+    "mrrAt5": 0.65,
+    "abstention": 1.0,
+    "sourceVerification": 1.0
+  },
+  "split_size": {
+    "reserve": {
+      "positive": 12,
+      "negative": 4
+    }
+  },
+  "sampling": {
+    "source": "성남시 분야별 감사사례 공식 HTML 본문 원본. 선택된 사건 12개는 각각 수집 원문 해시와 짧은 인용문을 대조했다.",
+    "selection": "기존 retrieval v1, 답변 벤치마크, 실자료 하네스 및 공개 점검기의 기존 사례 ID를 제외했다. 나머지 사례가 많은 12개 분야에서 수감기관이 기록된 사례를 대상으로 SHA-256(UTF-8 문자열 audit-reserve-20261125/ + 사례 ID) 오름차순 첫 사례를 선택했다. 사회복지 분야 첫 사례는 기존 D01과 사실관계가 중복되어 다음 순위인 city-2618을 선택했다.",
+    "independence": "검색 구현 고정 후 작성했다. 사례 선택·질문 및 정답 확정 중 검색이나 순위 확인을 하지 않았다. 사실관계는 인용 원문에서, 질문 문구는 별도로 작성했다.",
+    "limitations": [
+      "12개 분야에서 각각 한 사례를 뽑은 공개 소규모 표본이다.",
+      "답을 보고 만든 질문이며 실제 이용자 문의를 맹검 수집한 표본이 아니다.",
+      "질문당 원문 대조가 가능한 사례 하나를 지정했다. 다른 적절한 사례가 상위에 나와도 지정 사례 순위만 점수에 반영된다.",
+      "수감기관 정보가 있는 사례만 후보에 포함했다. 별도의 사람 정답 판정은 거치지 않았다."
+    ]
+  }
+}

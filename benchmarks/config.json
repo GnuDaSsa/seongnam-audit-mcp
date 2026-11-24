@@ -1,0 +1,26 @@
+{
+  "version": "city-retrieval-v1",
+  "k": 5,
+  "report_at": 3,
+  "hashes": {
+    "questions.json": "4398321c09104a5bce1e09fd25500824a283bbad89f7b6f63e9534c1a7ea55c8",
+    "judgments.json": "b475c253123cdfb3964946dba9088177a8518a53a588fd7068d1e1b7803de270"
+  },
+  "thresholds": {
+    "hitAt1": 0.5,
+    "hitAt3": 0.75,
+    "mrrAt5": 0.65,
+    "abstention": 1.0,
+    "sourceVerification": 1.0
+  },
+  "split_size": {
+    "development": {
+      "positive": 16,
+      "negative": 4
+    },
+    "holdout": {
+      "positive": 16,
+      "negative": 4
+    }
+  }
+}

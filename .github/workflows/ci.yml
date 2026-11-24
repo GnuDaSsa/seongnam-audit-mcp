@@ -40,7 +40,13 @@ jobs:
           python-version: '3.13'
       - name: HTML·PDF 원문 추출 라이브러리 설치
         run: python -m pip install -r requirements.txt
+      - name: 고정 버전의 공식 MCP 테스트 클라이언트 설치
+        run: npm ci --ignore-scripts --no-audit
       - name: 원문 PDF와 차단 안내문 구분
         run: python -m unittest discover -s tests -p test_report_source.py
       - name: 합성 자료로 검색·최종 검증·MCP 프로토콜 검사
         run: npm run test:ci
+      - name: 독립 답변과 채점표 지문 대조
+        run: |
+          node answer-benchmark.mjs --check-freeze
+          node answer-benchmark.mjs --suite final-v1 --check-freeze

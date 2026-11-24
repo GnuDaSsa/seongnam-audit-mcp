@@ -116,6 +116,22 @@ export async function checkLive(endpoint = production, request = globalThis.fetc
     assert.equal(result.verified, false);
     assert.deepEqual(result.evidence.map(e=>e.verified), [true,false]);
   });
+  await check('case 4773 preserves the recorded quantity of 61', async () => {
+    const scope = {case_id:'city-4773',location:'html:body'};
+    const original = await data('get_audit_original',{...scope,focus:golden['city-4773']});
+    assert.ok(original.verified);
+    const [complete, cut] = [golden['city-4773'],golden['city-4773'].slice(1)];
+    const checked = await data('verify_audit_evidence',{evidence:[{...scope,quote:complete},{...scope,quote:cut}]});
+    assert.equal(checked.verified,false);
+    assert.equal(checked.evidence[0].verified,true);
+    assert.equal(checked.evidence[0].sha256,original.sha256);
+    assert.equal(checked.evidence[1].error,'quote_cuts_numeric_expression');
+  });
+  await check('financial threshold questions specify the date and exceptions to check', async () => {
+    const r = await data('audit_research',{query:'계약금액 2천만 원 계약보증금 확약서',agency:'성남시의료원',limit:3});
+    assert.ok(r.matches.some(hit=>hit.case_id==='city-4831'));
+    assert.match(r.comparison_checks.join(' '),/계약 체결일.*시행본.*예외/u);
+  });
   for (const [name, query] of [['underspecified', '이거 감사 걸리나요?'], ['unrelated', '목성의 메탄 동위원소비 분광 관측']]) {
     await check(name + ' query has no evidence', async () => {
       const r = await data('audit_research',{query});

@@ -8,6 +8,8 @@ const examples = [
   ['electrical', '전기공사 미분리발주', '전기공사를 다른 공종과 함께 발주하여 분리발주 의무를 지키지 않은 사실이 확인됨.'],
   ['education', '마약류 취급 미이수업체 관리 소홀', '의무교육을 이수하지 않은 업체에 대한 관리 업무를 제대로 처리하지 않은 사실이 있음.'],
   ['weather', '공사 감독 확인 소홀', '시공 당일 강수가 관측되었다. 구청에서는 검토 자료를 보관하지 않았다.'],
+  ['noise', '소음진동관리법 위반 후속 조치 미흡', '진동 규제 대상 건설 현장에 대한 행정조치를 누락하였다.'],
+  ['one-case','감사 지적사항 후속조치', '여러 건의 추징 대상 중 한 건도 처리하지 않은 것으로 확인됐다.'],
 ];
 
 function fixture(ranker) {
@@ -28,11 +30,15 @@ for (const [name, ranker] of [
 ]) {
   test(name + ' requires subject evidence even with administrative filler or unrelated matching words', async () => {
     const service = await fixture(ranker);
-    for (const query of ['이거 감사에 걸릴지 확인해 주세요', '목성의 메탄 동위원소비 분광 관측', '제가 업무를 정상적으로 처리했는지 한번 봐주세요']) {
+    for (const query of ['이거 감사에 걸릴지 확인해 주세요', '목성의 메탄 동위원소비 분광 관측', '중성미자 진동 혼합각과 렙톤 대칭의 상관관계', '제가 업무를 정상적으로 처리했는지 한번 봐주세요', '제가 진행한 이 건도 확인해 주세요.', '그것만 검토해 주세요']) {
       const response = await service.research({ query });
       assert.equal(response.match_status, 'no_match', query);
       assert.deepEqual(response.matches, []);
     }
+  });
+  test(name + ' preserves a short title lookup even when the same word has unrelated meanings',async()=>{
+    const response=await (await fixture(ranker)).research({query:'진동'});
+    assert.equal(response.matches[0].case_id,'noise');
   });
 
   test(name + ' distinguishes split purchases and mandatory separate procurement of electrical work', async () => {

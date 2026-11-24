@@ -1,0 +1,45 @@
+name: 공개 MCP 벤치마크
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit
+      - name: 공식 SDK 양쪽 버전으로 운영 도구 호출
+        run: npm run test:protocol
+        env:
+          AUDIT_PROTOCOL_URL: https://seongnam-audit.gnudas0923.chatgpt.site/public-mcp
+      - name: 운영 수록 범위와 원문 재조회
+        if: ${{ !cancelled() }}
+        run: node live-check.mjs
+      - name: 고정 검색 평가군
+        if: ${{ !cancelled() }}
+        run: node benchmark.mjs --mode live --output search-report.json
+      - name: 수정 후 동결한 별도 평가군
+        if: ${{ !cancelled() }}
+        run: node benchmark.mjs --mode live --suite reserve-v1 --output reserve-report.json
+      - name: 최종 수정 후 처음 공개한 독립 질문
+        if: ${{ !cancelled() }}
+        run: node benchmark.mjs --mode live --suite final-v1 --output independent-report.json
+      - name: 한국어 첫 답변과 인용 재검증
+        if: ${{ !cancelled() }}
+        run: node answer-benchmark.mjs --replay-only --output answer-report.json
+      - name: 최종 독립 한국어 답변과 실무 유용성
+        if: ${{ !cancelled() }}
+        run: node answer-benchmark.mjs --suite final-v1 --output independent-answer-report.json
+      - name: 실행 결과 보존
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-public-benchmark
+          path: '*-report.json'

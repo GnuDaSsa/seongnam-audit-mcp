@@ -1,0 +1,261 @@
+[
+  {
+    "id": "D01",
+    "split": "development",
+    "query": "근로능력 평가가 달라지면 의료급여 1종 2종 자격도 바꿔야 하나요?",
+    "filters": {}
+  },
+  {
+    "id": "D02",
+    "split": "development",
+    "query": "무단방치 자동차를 팔고 남은 돈을 소유자에게 돌려주지 않고 구청 통장에 계속 뒀어요.",
+    "filters": {}
+  },
+  {
+    "id": "D03",
+    "split": "development",
+    "query": "허가증을 내줄 때 등록면허세가 납부됐는지 확인을 빠뜨렸습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D04",
+    "split": "development",
+    "query": "직원을 뽑으며 시간강사나 대학 조교로 일했던 경력까지 인정했는데 판단 기준이 모호해요.",
+    "filters": {
+      "agency": "성남산업진흥원"
+    }
+  },
+  {
+    "id": "D05",
+    "split": "development",
+    "query": "통신공사 설계변경 때 소모성 공구 가격을 재료비에도 노무비에도 넣었습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D06",
+    "split": "development",
+    "query": "공용차량 운행일지를 손으로 쓰고 한 달 치 결재를 한꺼번에 찍었습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D07",
+    "split": "development",
+    "query": "지연배상금을 계산할 때 준공검사한 날과 준공계를 받은 날 중 어느 날까지 셌는지 지적된 건이 있나요?",
+    "filters": {}
+  },
+  {
+    "id": "D08",
+    "split": "development",
+    "query": "미숙아 의료비를 지원하면서 예방접종비와 체온계 값도 그대로 지급했습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D09",
+    "split": "development",
+    "query": "지하수 이용자가 수질검사를 받는 기한을 넘겼는데 독촉도 과태료 부과도 하지 않았어요.",
+    "filters": {}
+  },
+  {
+    "id": "D10",
+    "split": "development",
+    "query": "공원의 판석 교체 때 기존 화강석을 다시 썼는데 새 자재비로 정산했어요.",
+    "filters": {}
+  },
+  {
+    "id": "D11",
+    "split": "development",
+    "query": "도시농업 위원회에 시의원이 의원 자격으로 참석했는데 회의 참석수당을 지급했습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D12",
+    "split": "development",
+    "query": "시효가 지나 기각될 소송인데 직접 수행하지 않고 소송대리인을 선임했어요.",
+    "filters": {}
+  },
+  {
+    "id": "D13",
+    "split": "development",
+    "query": "체육시설 운영자가 피해보상 보험에 가입했는지 확인한 기록이 없습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D14",
+    "split": "development",
+    "query": "공설시장 점포를 쓰기 시작한 뒤 한참 지나 사용료를 부과했습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D15",
+    "split": "development",
+    "query": "입찰보증금과 하자보수보증금을 한 통장에 오래 묶어두어 이자 계산도 어렵습니다.",
+    "filters": {}
+  },
+  {
+    "id": "D16",
+    "split": "development",
+    "query": "중개보조인 고용과 해제신고를 접수한 뒤 법정 민원 처리기한을 넘겼어요.",
+    "filters": {
+      "year": 2020,
+      "agency": "수정구청"
+    }
+  },
+  {
+    "id": "D17",
+    "split": "development",
+    "query": "검토 부탁드립니다. 이거 감사에서 문제가 될까요?",
+    "filters": {}
+  },
+  {
+    "id": "D18",
+    "split": "development",
+    "query": "중성미자 진동 혼합각과 렙톤 대칭의 상관관계",
+    "filters": {}
+  },
+  {
+    "id": "D19",
+    "split": "development",
+    "query": "지연배상금을 부과한 사례",
+    "filters": {
+      "year": 1988
+    }
+  },
+  {
+    "id": "D20",
+    "split": "development",
+    "query": "공사 보험료를 정산한 사례",
+    "filters": {
+      "agency": "가상솔바람도외기관"
+    }
+  },
+  {
+    "id": "H01",
+    "split": "holdout",
+    "query": "장기입원한 노인의 월동난방비를 제외하기로 결정한 달부터 지급하지 않았어요.",
+    "filters": {}
+  },
+  {
+    "id": "H02",
+    "split": "holdout",
+    "query": "일반수급자가 조건부수급자로 바뀌었는데 자활사업 참여 조건을 지켰는지 확인하지 않았습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H03",
+    "split": "holdout",
+    "query": "주차 위반 과태료를 줄여달라는 민원을 처리하면서 당사자 동의 없이 행정정보를 조회했어요.",
+    "filters": {}
+  },
+  {
+    "id": "H04",
+    "split": "holdout",
+    "query": "집에 주차장을 만든 보조금을 영수증 없이 처음 받은 견적 금액대로 지급했습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H05",
+    "split": "holdout",
+    "query": "일시적으로 집 두 채를 가진 사람이 종전 주택을 기한 안에 못 팔았는데 취득세를 더 부과하지 않았습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H06",
+    "split": "holdout",
+    "query": "기능직을 일반직으로 전환할 때 심사를 거치기 전에 시험 자격부터 줬어요.",
+    "filters": {}
+  },
+  {
+    "id": "H07",
+    "split": "holdout",
+    "query": "용역 과업지시서에 최종보고를 하라고 했지만 계약 기간 안에 보고가 없었습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H08",
+    "split": "holdout",
+    "query": "다른 공공기관에 에어컨을 넘기면서 관리전환조서 대신 사용전환 서식만 작성했어요.",
+    "filters": {}
+  },
+  {
+    "id": "H09",
+    "split": "holdout",
+    "query": "정보시스템 유지관리 용역비를 하드웨어와 소프트웨어 구분 없이 투입공수로만 계산했어요.",
+    "filters": {}
+  },
+  {
+    "id": "H10",
+    "split": "holdout",
+    "query": "공사나 용역 계약의 전자수입인지를 받아놓고 소인 처리를 안 했어요.",
+    "filters": {}
+  },
+  {
+    "id": "H11",
+    "split": "holdout",
+    "query": "필지를 합병한 다음 등기소에 등기촉탁을 뒤늦게 접수했어요.",
+    "filters": {}
+  },
+  {
+    "id": "H12",
+    "split": "holdout",
+    "query": "도시계획용역 업체에 연속지적도 자료를 주고 보안각서와 수령증을 받지 않았습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H13",
+    "split": "holdout",
+    "query": "농업인신문을 보내면서 대상자가 농업인인지 살피지 않고 관외 거주자에게도 보냈습니다.",
+    "filters": {}
+  },
+  {
+    "id": "H14",
+    "split": "holdout",
+    "query": "도시농부학교 참여자가 다른 도시로 전출했고 출석률도 낮았는데 계속 수료 대상자로 뒀어요.",
+    "filters": {}
+  },
+  {
+    "id": "H15",
+    "split": "holdout",
+    "query": "노래연습장의 주류판매 위반 횟수를 잘못 세서 영업정지를 짧게 처분했습니다.",
+    "filters": {
+      "agency": "분당구청",
+      "year": 2022
+    }
+  },
+  {
+    "id": "H16",
+    "split": "holdout",
+    "query": "운동장 인조잔디 공사 때 흙을 옮기는 거리와 덤프트럭 크기가 모두 바뀌었는데 정산을 생략했습니다.",
+    "filters": {
+      "year": 2022,
+      "agency": "푸른도시사업소"
+    }
+  },
+  {
+    "id": "H17",
+    "split": "holdout",
+    "query": "제가 진행한 이 건도 확인해 주세요.",
+    "filters": {}
+  },
+  {
+    "id": "H18",
+    "split": "holdout",
+    "query": "태양풍 플라스마 알fvén파 분산관계의 수치해석",
+    "filters": {}
+  },
+  {
+    "id": "H19",
+    "split": "holdout",
+    "query": "농지 전용 허가 사례",
+    "filters": {
+      "agency": "가상이웃도농업센터"
+    }
+  },
+  {
+    "id": "H20",
+    "split": "holdout",
+    "query": "검사조서 없이 대금 지급",
+    "filters": {
+      "year": 1987
+    }
+  }
+]
