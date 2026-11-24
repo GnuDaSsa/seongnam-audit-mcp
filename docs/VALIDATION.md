@@ -35,6 +35,8 @@ npx --yes @modelcontextprotocol/conformance@0.1.16 server --url https://seongnam
 
 추가 독립 답변군은 소규모로 설정한 95% 기준을 충족했다. 독립 검색군에서는 불충분한 질문에 대한 보류가 기준에 미달했다. 두 평가에는 서로 다른 질문이 들어 있다. 운영 성능을 추적하는 공개 이슈에 실패 질문과 기대 동작을 남겼다. [후속 이슈 #7](https://github.com/GnuDaSsa/seongnam-audit-mcp/issues/7)
 
+11월 25일 00시 42분(한국 시각) 최종 운영 검색 측정에서 첫 호출은 147.5ms, 이어진 13회는 중앙값 48.5ms·95백분위 186.6ms였다. 연속 단일 요청 기준이며 답변 생성 시간은 제외했다. 00시 46분에는 같은 운영 주소에서 새 답변 7턴의 근거를 모두 재현했다. 해당 구현의 PR 회귀 검사도 통과했다. [CI 실행](https://github.com/GnuDaSsa/seongnam-audit-mcp/actions/runs/45429497970) · [main에 반영된 구현](https://github.com/GnuDaSsa/seongnam-audit-mcp/commit/7884689b6e817b7bce519af0f7087a40b797f9ed)
+
 설계에 참고한 공식 프로토콜·SDK·검사기, `mcp-builder` 스킬의 평가 지침, 검색 연구 원문과 적용한 항목을 기록했다. [기술 조사 및 적용 내역](MCP_RESEARCH.md)
 
 ## 첨부 자료의 확인 범위
