@@ -1,0 +1,16 @@
+.env*
+!.env.example
+*.log
+__pycache__/
+*.pyc
+node_modules/
+originals/
+snapshot/
+model/
+dist/
+.cache/
+.sites-checkout/
+.openai/.hosting-*/
+.work/
+*.tar.gz
+*-results.json
