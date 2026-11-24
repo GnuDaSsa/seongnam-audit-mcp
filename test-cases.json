@@ -1,0 +1,112 @@
+{
+  "reference": "성남시청소년재단 2018년도 정기감사 결과보고, 감사결과처분요구서 1~8 및 성남시 분야별 감사사례 상세 본문",
+  "agency": "성남시청소년재단",
+  "year": 2018,
+  "cases": [
+    {
+      "id": "attendance",
+      "query": "출근은 했는데 지문을 여러 번 안 찍고 복무확인서로 대신했어요.",
+      "case_id": "foundation-2018-01",
+      "location": "p:8",
+      "quote": "복무확인서를제출한사실이있음."
+    },
+    {
+      "id": "duty-hours",
+      "query": "상황근무 명령을 받은 직원이 정해진 근무 시작시간에 늦었어요.",
+      "case_id": "foundation-2018-02",
+      "location": "p:11",
+      "quote": "상황근무 명령을 받아 상황근무 시작 전까지"
+    },
+    {
+      "id": "travel",
+      "query": "교육훈련 출장에서 입교일과 수료일 사이에도 일비 전액을 줬어요.",
+      "case_id": "foundation-2018-03",
+      "location": "p:12",
+      "quote": "기타일의일비를동일하게20,000원씩지급한사실이"
+    },
+    {
+      "id": "office-documents",
+      "query": "캐비닛을 잠그지 않고 문서를 방치해서 기동감찰 때 다시 지적됐어요.",
+      "case_id": "foundation-2018-04",
+      "location": "p:13",
+      "quote": "개인정보보호, 문서방치, 잠금장치미시건"
+    },
+    {
+      "id": "holiday",
+      "query": "추석 직원 격려 물품을 업무추진비로 결제한 뒤 자체계획을 세웠는데 감사에 지적된 사례가 있나요?",
+      "case_id": "foundation-2018-05",
+      "location": "p:14",
+      "quote": "격려금품을 집행하고 계획을 차후 수립하는 등 관련 규칙을 준수하지"
+    },
+    {
+      "id": "publish-contract",
+      "query": "수의계약을 체결한 뒤 홈페이지에 계약내역을 공개하지 않았습니다.",
+      "case_id": "foundation-2018-06",
+      "location": "p:16",
+      "quote": "계약내역을 미공개하는 등 계약정보 공개 업무를 소홀히 한"
+    },
+    {
+      "id": "contract-payment",
+      "query": "계약 완료 후 검사조서를 작성하지 않고 최종 대가를 지급했어요.",
+      "case_id": "foundation-2018-07",
+      "location": "p:18",
+      "quote": "계약완료에따른검사또는검사조서를작성하지않은채최종대가를"
+    },
+    {
+      "id": "it-accounts",
+      "query": "인사이동한 전보자 계정 권한을 회수하지 않고 휴면계정을 계속 두었습니다.",
+      "case_id": "foundation-2018-08",
+      "location": "p:19",
+      "quote": "전보자계정의권한회수및삭제처리를하지않았으며,"
+    },
+    {
+      "id": "city-parking",
+      "agency": "수정구청",
+      "year": 2026,
+      "query": "주차장법 위반을 적발한 뒤 처분사전통지와 시정명령까지만 했습니다.",
+      "case_id": "city-4882",
+      "location": "html:body",
+      "quote": "최초 위반사항 적발 후 “처분사전통지” 또는 “시정명령” 등의 행정절차만 이행한 채"
+    },
+    {
+      "id": "city-meals",
+      "agency": "분당구청",
+      "year": 2025,
+      "query": "지역아동센터에서 밥을 먹은 아동에게 같은 끼니의 도시락을 지원했어요.",
+      "case_id": "city-4813",
+      "location": "html:body",
+      "quote": "지역아동센터를 통해 식사를 제공 받은 아동이 해당 식사분을 도시락 등 다른 형태의 급식과 중복되는 일이 발생하지 않도록"
+    },
+    {
+      "id": "city-leave",
+      "agency": "중원구보건소",
+      "year": 2024,
+      "query": "병가 사용 일수를 근무일로 포함해서 직원 연가일수를 산정했어요.",
+      "case_id": "city-4711",
+      "location": "html:body",
+      "quote": "병가 사용으로 직무에 종사하지 않은 기간을 근무일로 포함하여 연가일수를 산정한 사례가 발견되어"
+    },
+    {
+      "id": "city-late-fee",
+      "agency": "본청",
+      "year": 2025,
+      "query": "납부기한을 놓쳐서 도시가스요금 연체료를 부서 세출예산으로 지출했습니다.",
+      "case_id": "city-4779",
+      "location": "html:body",
+      "quote": "도시가스요금 연체료 328,510원과 산재보험료 연체료 12,530원을 당시 업무 담당자로부터 회수하여 세입조치하도록"
+    },
+    {
+      "id": "city-conduct",
+      "agency": "성남산업진흥원",
+      "year": 2026,
+      "query": "소속 직원의 음주운전 비위를 확인하는 내부 관리방안을 따로 마련하지 않았습니다.",
+      "case_id": "city-4847",
+      "location": "html:body",
+      "quote": "운전경력증명서 확인 등 소속 직원의 음주운전 비위를 자체적으로 파악·관리할 내부 통제방안을 마련하였어야 함"
+    }
+  ],
+  "no_match": [
+    {"id": "unrelated", "query": "목성의 메탄 동위원소비 분광 관측"},
+    {"id": "unspecified", "query": "이거 감사 걸리나요?"}
+  ]
+}
