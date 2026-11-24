@@ -1,0 +1,16 @@
+{
+  "name": "seongnam-audit-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "start": "node server.mjs",
+    "http": "node server.mjs --http",
+    "build": "node build-site.mjs",
+    "test": "node harness.mjs",
+    "test:ci": "node --test tests/ci-fixture.test.mjs tests/audit-retrieval.test.mjs tests/transport.test.mjs",
+    "test:live": "node live-check.mjs"
+  },
+  "devDependencies": {"esbuild": "0.28.2"}
+}

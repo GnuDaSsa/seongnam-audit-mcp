@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="성남시가 공개한 감사사례를 검색하고 인용할 문구를 공식 원문과 대조합니다."><title>성남시 감사사례 조회</title>
+<style>
+:root{color-scheme:light;--ink:#152d3a;--blue:#06577c;--line:#c2d0d7;--paper:#f3f7f9}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Malgun Gothic",system-ui,sans-serif;line-height:1.65;word-break:keep-all}header{border-top:6px solid var(--blue);background:white;border-bottom:1px solid var(--line)}header>div,main,footer{max-width:880px;margin:auto;padding:24px}header>div{display:flex;justify-content:space-between;align-items:center;gap:14px}header strong{font-size:1.1rem}a{color:var(--blue);text-underline-offset:3px}main{padding-top:36px}h1{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.06em;line-height:1.15;margin:0 0 16px}p{margin:8px 0 16px}form{background:white;padding:22px;border:1px solid var(--line);border-radius:12px;margin:24px 0}label{font-weight:700;display:block;margin-bottom:6px}.row{display:flex;gap:8px}input{font:inherit;padding:10px 14px;border:1px solid #8198a3;border-radius:6px;flex:1;min-width:0}button{background:var(--blue);color:white;border:0;border-radius:6px;font:inherit;padding:10px 18px;cursor:pointer}button:disabled{opacity:.65}.muted,small{font-size:.91rem;color:#475d6a}article{margin:16px 0;padding:18px 20px;background:white;border:1px solid var(--line);border-radius:8px}h2{font-size:1.28rem;margin:0 0 6px}article blockquote{border-left:3px solid #a4bdc9;padding-left:12px;margin:10px 0;white-space:pre-line;overflow-wrap:anywhere}article button{font-size:.9rem;padding:6px 11px;margin-left:12px}details{margin:24px 0 12px;border-top:1px solid var(--line);padding-top:16px}summary{font-weight:700;cursor:pointer}code{word-break:break-all;overflow-wrap:anywhere;white-space:normal}footer{font-size:.93rem;border-top:1px solid var(--line)}@media(max-width:540px){main,footer,header>div{padding:18px}.row{flex-direction:column}header>div{align-items:flex-start}article button{margin:8px 0 0;display:block}}
+</style></head>
+<body><header><div><strong>성남시 감사사례 조회</strong><a href="https://github.com/GnuDaSsa/seongnam-audit-mcp/issues">오류 제보</a></div></header>
+<main><h1>공개 감사사례 검색</h1><p>업무 내용을 입력하면 성남시가 공개한 지적 사례와 원문을 함께 볼 수 있습니다.</p>
+<form id="search"><label for="query">확인할 업무</label><div class="row"><input id="query" name="query" maxlength="400" minlength="2" required placeholder="예: 같은 물건을 나눠서 구매한 경우" autocomplete="off"><button id="submit">사례 검색</button></div><small>이름·연락처·계좌번호를 제외하고 업무 유형과 처리 순서만 적어 주세요.</small></form>
+<p id="result-status" role="status"></p><section id="results" aria-label="검색 결과"></section>
+<details><summary>AI에서 MCP로 연결하기</summary><p>공개 읽기 전용 MCP 주소</p><code id="endpoint"></code><p>연결한 뒤 “이 업무와 비슷한 감사사례를 찾고, 답변 직전에 인용문을 원문과 다시 대조해 줘”라고 물어보세요.</p></details>
+<p class="muted"><span id="coverage">수록 현황을 불러오는 중입니다.</span> <a href="/api/status">출처별 수록 현황</a></p></main>
+<footer>성남시 공개자료를 활용한 독립 서비스입니다. 사례마다 표시된 기관과 감사 연도, 당시 적용 기준을 확인하세요. <a href="https://www.seongnam.go.kr/pm030305">성남시청 공식 자료</a> · <a href="https://github.com/GnuDaSsa/seongnam-audit-mcp/blob/main/licenses/THIRD_PARTY_NOTICES.md">검색 모델 출처</a></footer>
+<script type="module">
+const field = id => document.getElementById(id);
+const el = (tag,text) => {const node=document.createElement(tag);node.textContent=text;return node};
+field('endpoint').textContent=location.origin+'/public-mcp';
+fetch('/api/status').then(r=>r.json()).then(d=>{field('coverage').textContent='검색 가능한 사례 '+Number(d.searchable_cases ?? d.case_count).toLocaleString('ko-KR')+'건.'}).catch(()=>{field('coverage').textContent='현재 수록 건수를 확인할 수 없습니다.'});
+let rpcId=0;
+async function call(name,args) {
+ const r=await fetch('/public-mcp',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:++rpcId,method:'tools/call',params:{name,arguments:args}})});
+ if(!r.ok) throw Error('서비스 응답을 확인할 수 없습니다.');
+ const data=await r.json();
+ if(!data.result || data.result.isError) throw Error(data.result?.content?.[0]?.text || '요청을 완료할 수 없습니다.');
+ return data.result.structuredContent ?? JSON.parse(data.result.content[0].text);
+}
+field('search').addEventListener('submit',async event=>{
+ event.preventDefault();const button=field('submit'),status=field('result-status'),results=field('results');button.disabled=true;results.replaceChildren();status.textContent='사례를 찾고 있습니다.';
+ try{
+  const data=await call('audit_research',{query:field('query').value.trim(),limit:5});
+  status.textContent=data.matches.length?'관련 사례 후보 '+data.matches.length+'건':data.assessment;
+  for(const hit of data.matches) {
+   const card=el('article',''),link=el('a','공식 원문 열기');link.href=hit.source_url;link.target='_blank';link.rel='noopener noreferrer';
+   card.append(el('h2',hit.title),el('small',[hit.year+'년',hit.agency,hit.category].filter(Boolean).join(' · ')));
+   const ev=hit.evidence[0];if(ev)card.append(el('blockquote',ev.quote));card.append(link);
+   if(ev){const check=el('button','인용문 원문 대조'),out=el('p','');out.setAttribute('role','status');check.onclick=async()=>{
+     check.disabled=true;
+     try{const original=await call('get_audit_original',{case_id:ev.case_id,location:ev.location,focus:ev.quote});
+       if(!original.verified){out.textContent='원문을 확인할 수 없습니다.';return}
+       const result=await call('verify_audit_evidence',{evidence:[ev]});
+       out.textContent=result.verified?'보관한 공식 원문에서 동일한 인용문을 확인했습니다.':'인용문이 원문과 일치하는지 확인할 수 없습니다.';
+     }catch(e){out.textContent=e.message}finally{check.disabled=false}
+   };card.append(check,out)}results.append(card);
+  }
+ }catch(e){status.textContent=e.message}finally{button.disabled=false}
+});
+</script><!--
+Model publisher: Minish Lab (minishlab/potion-multilingual-128M).
+Model2Vec authors credited by the publisher: Stephan Tulkens and Thomas van Dongen.
+Model card at the revision used by this distribution:
+https://huggingface.co/minishlab/potion-multilingual-128M/blob/73908c3438cf03b6a01bcb9611d62b23d0726f08/README.md
+
+The model card designates the weights as MIT. The associated Model2Vec
+project publishes the following notice:
+https://github.com/MinishLab/model2vec/blob/main/LICENSE
+
+MIT License
+
+Copyright (c) 2024 Thomas van Dongen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+</body></html>

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "seongnam-audit-public": {
+      "type": "http",
+      "url": "https://seongnam-audit.gnudas0923.chatgpt.site/public-mcp"
+    },
+    "seongnam-audit-local": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["C:/path/to/seongnam-audit-mcp/server.mjs"]
+    }
+  }
+}
