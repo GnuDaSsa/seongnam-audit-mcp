@@ -1,6 +1,9 @@
 name: 공개 MCP 벤치마크
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/public-benchmark.yml']
 permissions:
   contents: read
 jobs:

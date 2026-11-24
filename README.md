@@ -73,6 +73,6 @@ python pipeline/prepare_model.py ../seongnam-budget-mcp/snapshot/semantic
 | `node answer-benchmark.mjs --output answer-results.json` | 첫 한국어 답변의 채점표를 확인하고 운영 원문을 다시 대조한다. 설정한 정확성·유용성 기준에 미달하면 종료 코드 1을 반환한다. |
 | `node benchmark.mjs --mode live --suite final-v1` · `node answer-benchmark.mjs --suite final-v1` | 최종 수정 후 새로 동결한 검색 14문항과 한국어 답변 6개 대화의 기준 충족 여부를 각각 확인한다. |
 
-1.1.0의 실측 성적과 예산 MCP에서 이어받은 검사 범위를 공개했다. GitHub Actions의 ‘공개 MCP 벤치마크’는 수동 실행 시 운영 주소를 호출하고 문항별 보고서를 보관한다. [운영 검증 결과](docs/VALIDATION.md) · [검색 평가와 최초 실패 기록](docs/BENCHMARK.md) · [한국어 답변 채점](docs/ANSWERS.md) · [참고한 MCP 저장소와 스킬](docs/MCP_RESEARCH.md)
+1.1.0의 실측 성적과 예산 MCP에서 이어받은 검사 범위를 공개했다. GitHub Actions의 ‘공개 MCP 벤치마크’는 수동으로 실행하거나 해당 워크플로 파일을 `main`에서 변경하면 운영 주소를 호출하고 문항별 보고서를 보관한다. [운영 검증 결과](docs/VALIDATION.md) · [검색 평가와 최초 실패 기록](docs/BENCHMARK.md) · [한국어 답변 채점](docs/ANSWERS.md) · [참고한 MCP 저장소와 스킬](docs/MCP_RESEARCH.md)
 
 오류를 제보할 때는 공개 가능한 재현 질문과 사례 ID 또는 공식 원문 위치를 남긴다. 전체 원문, 검색 스냅샷, 모델 가중치와 이용자 내부 문서는 공개 Git에 올리지 않는다. [기여 방법](CONTRIBUTING.md) · [이슈 목록](https://github.com/GnuDaSsa/seongnam-audit-mcp/issues)
