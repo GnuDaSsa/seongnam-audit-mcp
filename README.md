@@ -68,5 +68,10 @@ python pipeline/prepare_model.py ../seongnam-budget-mcp/snapshot/semantic
 | `npm test` | 실제 시청·재단 자료가 준비된 환경에서 고정 사례의 검색, 원문, 최종 인용 검증과 자료 변조·무관한 질문을 검사한다. |
 | `npm run build` | 시청 원문, 수록 현황, 모델 체크섬을 확인한 뒤 공개 HTTP 서비스용 `dist/`를 생성한다. |
 | `npm run test:live` | 배포된 운영 서버의 실제 MCP 연결과 근거 대조를 확인한다. |
+| `npm run test:protocol` | 공식 SDK 구·신버전과 HTTP 요청을 검사한다. `AUDIT_PROTOCOL_URL`을 설정하면 공식 SDK가 지정된 원격 서버를 호출한다. |
+| `node benchmark.mjs --mode live --suite reserve-v1 --output reserve-results.json` | 공개 서버에서 16개 예비 문항의 첫 검색 순위, 답변 보류, 공식 원문과 걸린 시간을 기록한다. 기본 평가군 40문항은 `--suite reserve-v1`을 생략해 실행한다. |
+| `node answer-benchmark.mjs --output answer-results.json` | 첫 한국어 답변의 채점표를 확인하고 운영 원문을 다시 대조한다. 설정한 정확성·유용성 기준에 미달하면 종료 코드 1을 반환한다. |
+
+1.1.0의 실측 성적과 예산 MCP에서 이어받은 검사 범위를 공개했다. GitHub Actions의 ‘공개 MCP 벤치마크’는 수동 실행 시 운영 주소를 호출하고 문항별 보고서를 보관한다. [운영 검증 결과](docs/VALIDATION.md) · [검색 평가와 최초 실패 기록](docs/BENCHMARK.md) · [한국어 답변 채점](docs/ANSWERS.md) · [참고한 MCP 저장소와 스킬](docs/MCP_RESEARCH.md)
 
 오류를 제보할 때는 공개 가능한 재현 질문과 사례 ID 또는 공식 원문 위치를 남긴다. 전체 원문, 검색 스냅샷, 모델 가중치와 이용자 내부 문서는 공개 Git에 올리지 않는다. [기여 방법](CONTRIBUTING.md) · [이슈 목록](https://github.com/GnuDaSsa/seongnam-audit-mcp/issues)

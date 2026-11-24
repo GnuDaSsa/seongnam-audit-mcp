@@ -1,7 +1,7 @@
-import { createAuditCore } from './core.mjs';
+import { boundedExcerpt, createAuditCore, excerptBounds, locateQuote } from './core.mjs';
 import { caseText, gunzip, sha256Hex } from './hosted-asset.mjs';
 import { dimensions, initEncoder } from './semantic-core.mjs';
-import { dispatch } from './rpc.mjs';
+import { dispatchHttp } from './rpc.mjs';
 import policy from './config/policy.json';
 
 const built = /*__HOSTED_DATA__*/null;
@@ -24,10 +24,10 @@ function excerpt(text, {maximum=145, focus='', query=''} = {}) {
   const body = normal(text);
   const limit = Math.min(maximum, Math.ceil(body.length * 0.8));
   if (focus) {
-    const needle = normal(focus), at = body.indexOf(needle);
-    if (at < 0 || needle.length > limit) return null;
-    const left = Math.max(0, Math.min(body.length - limit, at - Math.floor((limit - needle.length)/2)));
-    return body.slice(left, left+limit).trim();
+    const needle = normal(focus), match = locateQuote(body, needle);
+    if (match.error || needle.length > limit) return null;
+    const left = Math.max(0, Math.min(body.length - limit, match.start - Math.floor((limit - needle.length)/2)));
+    return boundedExcerpt(body, left, left + limit);
   }
   // In a short excerpt prioritize the finding after an explicit transition over quotations of statutes.
   const turn = /(?:그런데|그러나|그럼에도(?:\s*불구하고)?|확인한 결과|점검한 결과|감사 결과)[,\s]/u.exec(body);
@@ -39,7 +39,7 @@ function excerpt(text, {maximum=145, focus='', query=''} = {}) {
     if (offsets.length) pivot = Math.max(0, Math.min(...offsets) - 25);
   }
   const left = Math.min(pivot ?? 0, Math.max(0, body.length - limit));
-  return body.slice(left, left + limit).trim();
+  return boundedExcerpt(body, left, left + limit);
 }
 
 export async function hostedEngine(env, bundle) {
@@ -79,7 +79,7 @@ export async function hostedEngine(env, bundle) {
     }
   });
   return {
-    status() { return {...core.status(), verification:scope, license_scope:'시청 공개 게시물의 짧은 근거와 공식 원문 링크를 제공합니다.'}; },
+    status() { return {...core.status(), corpus_sha256:bundle.corpusHash, verification:scope, license_scope:'시청 공개 게시물의 짧은 근거와 공식 원문 링크를 제공합니다.'}; },
     async research(input) {
       const result = await core.research(input);
       for (const row of result.matches) {
@@ -104,9 +104,11 @@ export async function hostedEngine(env, bundle) {
         const length = Array.from(ev.context).length;
         const maxContext = Math.min(190, Math.ceil(length * 0.85));
         if (Array.from(ev.quote).length > maxContext) return {verified:false,error:'quote_too_long_for_case',evidence:[]};
-        const at = ev.context.indexOf(ev.quote);
-        const start = Math.max(0, at - Math.floor((maxContext - ev.quote.length) / 2));
-        ev.context = ev.context.slice(start, start + maxContext);
+        const at = ev.quote_start_in_context;
+        const start = Math.max(0, Math.min(ev.context.length - maxContext, at - Math.floor((maxContext - ev.quote.length) / 2)));
+        const bounds = excerptBounds(ev.context,start,Math.min(ev.context.length,start + maxContext));
+        ev.context = ev.context.slice(bounds.start, bounds.end);
+        ev.quote_start_in_context = at - bounds.start;
       }
       // The official source URL accompanies every successful citation for access to the full context.
       delete r.case_contexts;
@@ -154,8 +156,8 @@ export function workerFor(bundle) {
       try { body = await requestJson(request); }
       catch { return json({jsonrpc:'2.0', id:null,error:{code:-32700,message:'Invalid JSON'}},400); }
       if (body === null) return json({error:'invalid_or_oversized_request'},400);
-      const message = await dispatch(engine, policy, body);
-      return message === null ? new Response(null,{status:202}) : json(message);
+      const result = await dispatchHttp(engine, policy, body, request.headers);
+      return result.body === null ? new Response(null,{status:result.status}) : json(result.body,result.status);
     } catch { return json({error:'service_unavailable'},503); }
   }};
 }

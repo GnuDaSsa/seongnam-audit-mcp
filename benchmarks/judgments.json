@@ -1,0 +1,522 @@
+[
+  {
+    "id": "D01",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3725",
+        "category": "사회복지",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "자격변동 관리를 소홀히 한 사실이 있음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3725"
+      }
+    ]
+  },
+  {
+    "id": "D02",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3122",
+        "category": "도로/교통",
+        "agency": "중원구청",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "공탁 없이 무단방치 자동차의 매각 등 처분 후 잔액을",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3122"
+      }
+    ]
+  },
+  {
+    "id": "D03",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3697",
+        "category": "지방세",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "등록면허세 납세 여부를 안내 및 확인 하지 않고 허가증",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3697"
+      }
+    ]
+  },
+  {
+    "id": "D04",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4591",
+        "category": "일반행정",
+        "agency": "성남산업진흥원",
+        "year": 2023,
+        "location": "html:body",
+        "quote": "계약직인 사립대 조교, 주 3일 시간강사",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4591"
+      }
+    ]
+  },
+  {
+    "id": "D05",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2899",
+        "category": "계약",
+        "agency": "성남문화재단",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "재료비와 노무비에 중복으로 반영하였는데도",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2899"
+      }
+    ]
+  },
+  {
+    "id": "D06",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2986",
+        "category": "재산관리",
+        "agency": "성남시상권활성화재단",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "운행일지의 결재도 매일 하지 않고 월1회",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2986"
+      }
+    ]
+  },
+  {
+    "id": "D07",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2843",
+        "category": "예산/회계",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "준공검사일이 아닌 준공계 접수일",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2843"
+      }
+    ]
+  },
+  {
+    "id": "D08",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4781",
+        "category": "보건/의료",
+        "agency": "수정구보건소",
+        "year": 2025,
+        "location": "html:body",
+        "quote": "예방접종비, 코로나 검사비 및 체온계",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4781"
+      }
+    ]
+  },
+  {
+    "id": "D09",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3748",
+        "category": "수도/지하수",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "수질검사 시기가 지났음에도 촉구 공문 발송",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3748"
+      }
+    ]
+  },
+  {
+    "id": "D10",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3679",
+        "category": "공원/녹지",
+        "agency": "푸른도시사업소",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "일부 화강석을 재활용하여 교체",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3679"
+      }
+    ]
+  },
+  {
+    "id": "D11",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2143",
+        "category": "경제",
+        "agency": "농업기술센터",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "지방의회의원 자격으로 참석한 위원에 대하여",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2143"
+      }
+    ]
+  },
+  {
+    "id": "D12",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2228",
+        "category": "소송사무",
+        "agency": "도시개발사업단",
+        "year": 2018,
+        "location": "html:body",
+        "quote": "소송대리인을 선임하여 불필요한 예산을 집행",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2228"
+      }
+    ]
+  },
+  {
+    "id": "D13",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3110",
+        "category": "교육/문화",
+        "agency": "중원구청",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "보험가입여부를 확인, 관리하지 않아",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3110"
+      }
+    ]
+  },
+  {
+    "id": "D14",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2983",
+        "category": "세외수입",
+        "agency": "성남시상권활성화재단",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "30일에서 212일까지 지연하여 부과",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2983"
+      }
+    ]
+  },
+  {
+    "id": "D15",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3691",
+        "category": "예산/회계",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "통합계좌에서 운영하여 납부자에게 반환 시 이자 산정을 곤란하게",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3691"
+      }
+    ]
+  },
+  {
+    "id": "D16",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2836",
+        "category": "토지/지적",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "고용 및 해제신고 민원을 처리하며",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2836"
+      }
+    ]
+  },
+  {
+    "id": "D17",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "D18",
+    "kind": "out_of_scope",
+    "expected": []
+  },
+  {
+    "id": "D19",
+    "kind": "empty_filter",
+    "expected": []
+  },
+  {
+    "id": "D20",
+    "kind": "empty_filter",
+    "expected": []
+  },
+  {
+    "id": "H01",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3724",
+        "category": "사회복지",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "월동난방비를 지급하지 아니하기로 결정한 달",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3724"
+      }
+    ]
+  },
+  {
+    "id": "H02",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3723",
+        "category": "사회복지",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "조건이행 여부를 확인하지 않는 등",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3723"
+      }
+    ]
+  },
+  {
+    "id": "H03",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3123",
+        "category": "도로/교통",
+        "agency": "중원구청",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "동의를 받지 않고 행정정보를 조회한 사실이 있음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3123"
+      }
+    ]
+  },
+  {
+    "id": "H04",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3121",
+        "category": "도로/교통",
+        "agency": "중원구청",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "당초 견적금액을 가지고 보조금을 지급결정",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3121"
+      }
+    ]
+  },
+  {
+    "id": "H05",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3698",
+        "category": "지방세",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "유예기간인 1년 내에 처분하지 못한 납세자에 대하여",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3698"
+      }
+    ]
+  },
+  {
+    "id": "H06",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4592",
+        "category": "일반행정",
+        "agency": "성남산업진흥원",
+        "year": 2023,
+        "location": "html:body",
+        "quote": "공정한 심사 없이 우선 전환자격을 부여하고",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4592"
+      }
+    ]
+  },
+  {
+    "id": "H07",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2900",
+        "category": "계약",
+        "agency": "성남문화재단",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "과업기간 동안 최종보고 *건에 대하여 절차를 이행하지 않음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2900"
+      }
+    ]
+  },
+  {
+    "id": "H08",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2985",
+        "category": "재산관리",
+        "agency": "성남시상권활성화재단",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "대표이사의 결재를 얻지 않고 관리전환",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2985"
+      }
+    ]
+  },
+  {
+    "id": "H09",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3801",
+        "category": "정보/통신",
+        "agency": "성남시청소년재단",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "모두 투입공수 방식으로 적용하였고",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3801"
+      }
+    ]
+  },
+  {
+    "id": "H10",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3670",
+        "category": "세외수입",
+        "agency": "푸른도시사업소",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "전자적 소인을 누락하였음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3670"
+      }
+    ]
+  },
+  {
+    "id": "H11",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3138",
+        "category": "토지/지적",
+        "agency": "중원구청",
+        "year": 2021,
+        "location": "html:body",
+        "quote": "12일이 경과한 2019년 8월 21일에 등기촉탁",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3138"
+      }
+    ]
+  },
+  {
+    "id": "H12",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2837",
+        "category": "토지/지적",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "자료제공 시 보안각서 및 수령증을 미징구",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2837"
+      }
+    ]
+  },
+  {
+    "id": "H13",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2783",
+        "category": "경제",
+        "agency": "농업기술센터",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "관외자에게도 농업인신문을 제공한 사실",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2783"
+      }
+    ]
+  },
+  {
+    "id": "H14",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2142",
+        "category": "경제",
+        "agency": "농업기술센터",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "농부학교 참석률이 70%미만으로 수료대상자격에 미달",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2142"
+      }
+    ]
+  },
+  {
+    "id": "H15",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3714",
+        "category": "교육/문화",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "행정처분의 차수를 착오 산정하여",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3714"
+      }
+    ]
+  },
+  {
+    "id": "H16",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3678",
+        "category": "공원/녹지",
+        "agency": "푸른도시사업소",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "이에 대한 검토 및 정산없이 준공처리",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3678"
+      }
+    ]
+  },
+  {
+    "id": "H17",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "H18",
+    "kind": "out_of_scope",
+    "expected": []
+  },
+  {
+    "id": "H19",
+    "kind": "empty_filter",
+    "expected": []
+  },
+  {
+    "id": "H20",
+    "kind": "empty_filter",
+    "expected": []
+  }
+]

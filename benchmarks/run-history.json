@@ -1,0 +1,711 @@
+{
+  "benchmark": "city-retrieval-v1",
+  "fixtureSha256": {
+    "questions.json": "4398321c09104a5bce1e09fd25500824a283bbad89f7b6f63e9534c1a7ea55c8",
+    "judgments.json": "b475c253123cdfb3964946dba9088177a8518a53a588fd7068d1e1b7803de270"
+  },
+  "sourceCount": 1717,
+  "runs": [
+    {
+      "stage": "개발군 첫 측정",
+      "recordedAt": "2026-11-24T15:27:05.365Z",
+      "target": "local-city",
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "fullReportFile": "audit-dev-baseline-results.json",
+      "fullReportSha256": "38e443f36161f08b540312d510818a1be220bd1e287e94f3e347361552a504b4",
+      "passed": false,
+      "metrics": {
+        "lexical": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 10,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 3,
+            "verifiedSources": 16,
+            "hitAt1": 0.625,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.7395833333333334,
+            "abstention": 0.75,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 20.1,
+              "remaining": 19,
+              "p50": 7.7,
+              "p95": 23.3
+            }
+          }
+        },
+        "hybrid": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 11,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 3,
+            "verifiedSources": 16,
+            "hitAt1": 0.6875,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.78125,
+            "abstention": 0.75,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 49,
+              "remaining": 19,
+              "p50": 16.9,
+              "p95": 97.1
+            }
+          }
+        }
+      },
+      "misses": {
+        "lexical": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2867",
+              "city-2711"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2418",
+              "city-2079"
+            ]
+          },
+          {
+            "id": "D18",
+            "kind": "out_of_scope",
+            "returned": [
+              "city-3734",
+              "city-3129"
+            ]
+          }
+        ],
+        "hybrid": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2711",
+              "city-2867"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2086",
+              "city-2079"
+            ]
+          },
+          {
+            "id": "D18",
+            "kind": "out_of_scope",
+            "returned": [
+              "city-3129",
+              "city-3734"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "첫 수정 뒤 개발군",
+      "recordedAt": "2026-11-24T15:29:02.993Z",
+      "target": "local-city",
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "fullReportFile": "audit-dev-fixed-results.json",
+      "fullReportSha256": "9d7eb22bfd981dd645440c585ef12dbbb4aac5a98f3b6337f5cb5234b13bfdbf",
+      "passed": true,
+      "metrics": {
+        "lexical": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 10,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.625,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.7395833333333334,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 51.6,
+              "remaining": 19,
+              "p50": 25.9,
+              "p95": 100.8
+            }
+          }
+        },
+        "hybrid": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 11,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.6875,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.78125,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 97.8,
+              "remaining": 19,
+              "p50": 44.5,
+              "p95": 368.5
+            }
+          }
+        }
+      },
+      "misses": {
+        "lexical": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2867",
+              "city-2711"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2418",
+              "city-2079"
+            ]
+          }
+        ],
+        "hybrid": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2711",
+              "city-2867"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2086",
+              "city-2079"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "보류군 첫 개봉",
+      "recordedAt": "2026-11-24T15:30:00.475Z",
+      "target": "local-city",
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "fullReportFile": "audit-retrieval-full-results.json",
+      "fullReportSha256": "7e4317735a34541212b71623d0e009a70632a4e72b9836ee1b4bfd44caaac02a",
+      "passed": false,
+      "metrics": {
+        "lexical": {
+          "holdout": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 14,
+            "correctTop3": 16,
+            "correctTop5": 16,
+            "correctAbstentions": 3,
+            "verifiedSources": 16,
+            "hitAt1": 0.875,
+            "hitAt3": 1,
+            "hitAt5": 1,
+            "mrrAt5": 0.9270833333333334,
+            "abstention": 0.75,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 16.2,
+              "remaining": 19,
+              "p50": 22.1,
+              "p95": 46.3
+            }
+          }
+        },
+        "hybrid": {
+          "holdout": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 12,
+            "correctTop3": 16,
+            "correctTop5": 16,
+            "correctAbstentions": 3,
+            "verifiedSources": 16,
+            "hitAt1": 0.75,
+            "hitAt3": 1,
+            "hitAt5": 1,
+            "mrrAt5": 0.8645833333333334,
+            "abstention": 0.75,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 39.6,
+              "remaining": 19,
+              "p50": 32.6,
+              "p95": 183.7
+            }
+          }
+        }
+      },
+      "misses": {
+        "lexical": [
+          {
+            "id": "H17",
+            "kind": "underspecified",
+            "returned": [
+              "city-3752",
+              "city-2943"
+            ]
+          }
+        ],
+        "hybrid": [
+          {
+            "id": "H17",
+            "kind": "underspecified",
+            "returned": [
+              "city-3752",
+              "city-2943"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "지시어 수정 뒤 공개 회귀",
+      "recordedAt": "2026-11-24T15:31:01.450Z",
+      "target": "local-city",
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "fullReportFile": "audit-retrieval-regression-results.json",
+      "fullReportSha256": "767ecc30266b47af663ec1b336d1b17e1d4d351ad50d05c5f9f9a392f712da18",
+      "passed": true,
+      "metrics": {
+        "lexical": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 10,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.625,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.7395833333333334,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 65.4,
+              "remaining": 19,
+              "p50": 16.7,
+              "p95": 54.6
+            }
+          },
+          "holdout": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 14,
+            "correctTop3": 16,
+            "correctTop5": 16,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.875,
+            "hitAt3": 1,
+            "hitAt5": 1,
+            "mrrAt5": 0.9270833333333334,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 14,
+              "remaining": 19,
+              "p50": 12.9,
+              "p95": 30.1
+            }
+          }
+        },
+        "hybrid": {
+          "development": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 11,
+            "correctTop3": 14,
+            "correctTop5": 14,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.6875,
+            "hitAt3": 0.875,
+            "hitAt5": 0.875,
+            "mrrAt5": 0.78125,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 39,
+              "remaining": 19,
+              "p50": 27.8,
+              "p95": 212.5
+            }
+          },
+          "holdout": {
+            "count": 20,
+            "positive": 16,
+            "negative": 4,
+            "correctTop1": 12,
+            "correctTop3": 16,
+            "correctTop5": 16,
+            "correctAbstentions": 4,
+            "verifiedSources": 16,
+            "hitAt1": 0.75,
+            "hitAt3": 1,
+            "hitAt5": 1,
+            "mrrAt5": 0.8645833333333334,
+            "abstention": 1,
+            "sourceVerification": 1,
+            "researchLatencyMs": {
+              "first": 20,
+              "remaining": 19,
+              "p50": 20.9,
+              "p95": 134.9
+            }
+          }
+        }
+      },
+      "misses": {
+        "lexical": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2867",
+              "city-2711"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2418",
+              "city-2079"
+            ]
+          }
+        ],
+        "hybrid": [
+          {
+            "id": "D06",
+            "kind": "positive",
+            "returned": [
+              "city-2120",
+              "city-2778",
+              "city-4068",
+              "city-2711",
+              "city-2867"
+            ]
+          },
+          {
+            "id": "D15",
+            "kind": "positive",
+            "returned": [
+              "city-2154",
+              "city-2309",
+              "city-4790",
+              "city-2086",
+              "city-2079"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "reserveFirstRun": {
+    "benchmark": "city-retrieval-reserve-v1",
+    "stage": "추가 예비군 첫 개봉",
+    "target": "local-city",
+    "recordedAt": "2026-11-24T15:33:01.612Z",
+    "fixtureSha256": {
+      "questions.json": "d5a3318c8e08a3f85f2dc5cc0faf067a543a451c77ec7ad9d921360c955c49eb",
+      "judgments.json": "9edf8a20545df9dca90eb01a167f67dc5052ca248e6fa74f2922d6874b8ab4e1"
+    },
+    "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+    "searchableCases": 1717,
+    "fullReportFile": "audit-reserve-first.json",
+    "fullReportSha256": "8eb85ef76fb0b7f1cf85157b0c4d15babca94601cf3900fcfd710210fa907a00",
+    "passed": false,
+    "failedGates": [
+      {
+        "mode": "hybrid",
+        "split": "reserve",
+        "metric": "abstention",
+        "minimum": 1,
+        "actual": 0.75,
+        "passed": false
+      }
+    ],
+    "metrics": {
+      "lexical": {
+        "count": 16,
+        "positive": 12,
+        "negative": 4,
+        "correctTop1": 8,
+        "correctTop3": 10,
+        "correctTop5": 11,
+        "correctAbstentions": 3,
+        "verifiedSources": 12,
+        "hitAt1": 0.6666666666666666,
+        "hitAt3": 0.8333333333333334,
+        "hitAt5": 0.9166666666666666,
+        "mrrAt5": 0.7708333333333334,
+        "abstention": 0.75,
+        "sourceVerification": 1,
+        "researchLatencyMs": {
+          "first": 39,
+          "remaining": 15,
+          "p50": 9.1,
+          "p95": 39.7
+        }
+      },
+      "hybrid": {
+        "count": 16,
+        "positive": 12,
+        "negative": 4,
+        "correctTop1": 9,
+        "correctTop3": 10,
+        "correctTop5": 12,
+        "correctAbstentions": 3,
+        "verifiedSources": 12,
+        "hitAt1": 0.75,
+        "hitAt3": 0.8333333333333334,
+        "hitAt5": 1,
+        "mrrAt5": 0.8333333333333334,
+        "abstention": 0.75,
+        "sourceVerification": 1,
+        "researchLatencyMs": {
+          "first": 65.7,
+          "remaining": 15,
+          "p50": 12.7,
+          "p95": 173.3
+        }
+      }
+    },
+    "misses": {
+      "lexical": [
+        {
+          "id": "R03",
+          "kind": "positive",
+          "rank": null,
+          "returned": [
+            "city-3753",
+            "city-3756",
+            "city-4103",
+            "city-4614",
+            "city-3143"
+          ]
+        },
+        {
+          "id": "R05",
+          "kind": "positive",
+          "rank": 4,
+          "returned": [
+            "city-3804",
+            "city-2983",
+            "city-2995",
+            "city-1998",
+            "city-2394"
+          ]
+        },
+        {
+          "id": "R16",
+          "kind": "out_of_scope",
+          "rank": null,
+          "returned": [
+            "city-4753",
+            "city-4766",
+            "city-2377"
+          ]
+        }
+      ],
+      "hybrid": [
+        {
+          "id": "R03",
+          "kind": "positive",
+          "rank": 4,
+          "returned": [
+            "city-3756",
+            "city-3753",
+            "city-4103",
+            "city-2528",
+            "city-3143"
+          ]
+        },
+        {
+          "id": "R05",
+          "kind": "positive",
+          "rank": 4,
+          "returned": [
+            "city-2995",
+            "city-2983",
+            "city-3804",
+            "city-1998",
+            "city-2394"
+          ]
+        },
+        {
+          "id": "R16",
+          "kind": "out_of_scope",
+          "rank": null,
+          "returned": [
+            "city-2377",
+            "city-4753",
+            "city-4766"
+          ]
+        }
+      ]
+    }
+  },
+  "finalLocalRegressions": [
+    {
+      "benchmark": "city-retrieval-reserve-v1",
+      "target": "local-city",
+      "recordedAt": "2026-11-24T15:37:11.140Z",
+      "fixtureSha256": {
+        "questions.json": "d5a3318c8e08a3f85f2dc5cc0faf067a543a451c77ec7ad9d921360c955c49eb",
+        "judgments.json": "9edf8a20545df9dca90eb01a167f67dc5052ca248e6fa74f2922d6874b8ab4e1"
+      },
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "evaluatorSha256": "9d91d9b7e11628ca8252d48bbeb075248098e75a34374eb55ab2e720f70e9e9e",
+      "localRetrievalCodeSha256": "d87bd97ff66d730fd5a89c6baeb4d189968d26dc666e7be01ad260a21201c3e1",
+      "passed": true,
+      "fullReportFile": "audit-final-reserve.json",
+      "fullReportSha256": "4d840e715e85797e94a7420a9fad48bb371641e04befc7c8764a5de568969bf2",
+      "metrics": {
+        "lexical": {
+          "positive": 12,
+          "negative": 4,
+          "correctTop1": 8,
+          "correctTop3": 10,
+          "correctTop5": 11,
+          "mrrAt5": 0.7708333333333334,
+          "correctAbstentions": 4,
+          "verifiedSources": 12
+        },
+        "hybrid": {
+          "positive": 12,
+          "negative": 4,
+          "correctTop1": 9,
+          "correctTop3": 10,
+          "correctTop5": 12,
+          "mrrAt5": 0.8333333333333334,
+          "correctAbstentions": 4,
+          "verifiedSources": 12
+        }
+      },
+      "knownQuestion": {
+        "lexical": {
+          "id": "R16",
+          "returned": [],
+          "abstained": true
+        },
+        "hybrid": {
+          "id": "R16",
+          "returned": [],
+          "abstained": true
+        }
+      }
+    },
+    {
+      "benchmark": "city-retrieval-v1",
+      "target": "local-city",
+      "recordedAt": "2026-11-24T15:37:19.802Z",
+      "fixtureSha256": {
+        "questions.json": "4398321c09104a5bce1e09fd25500824a283bbad89f7b6f63e9534c1a7ea55c8",
+        "judgments.json": "b475c253123cdfb3964946dba9088177a8518a53a588fd7068d1e1b7803de270"
+      },
+      "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+      "evaluatorSha256": "9d91d9b7e11628ca8252d48bbeb075248098e75a34374eb55ab2e720f70e9e9e",
+      "localRetrievalCodeSha256": "d87bd97ff66d730fd5a89c6baeb4d189968d26dc666e7be01ad260a21201c3e1",
+      "passed": true,
+      "fullReportFile": "audit-final-search.json",
+      "fullReportSha256": "541d4875111ea159bf71fe1b612e0e77a553de90b47b6c8547502f58ff974ba5",
+      "metrics": {
+        "lexical": {
+          "positive": 32,
+          "negative": 8,
+          "correctTop1": 24,
+          "correctTop3": 30,
+          "correctTop5": 30,
+          "mrrAt5": 0.8333333333333334,
+          "correctAbstentions": 8,
+          "verifiedSources": 32
+        },
+        "hybrid": {
+          "positive": 32,
+          "negative": 8,
+          "correctTop1": 23,
+          "correctTop3": 30,
+          "correctTop5": 30,
+          "mrrAt5": 0.8229166666666666,
+          "correctAbstentions": 8,
+          "verifiedSources": 32
+        }
+      }
+    }
+  ]
+}

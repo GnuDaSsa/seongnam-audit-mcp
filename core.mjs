@@ -2,11 +2,59 @@ const sourceSets = ['city', 'foundation', 'province'];
 const noMatch = '수록 범위에서 질문과 대조할 공개 사례를 찾지 못했습니다. 공개 사례의 유무만으로 감사 지적 여부를 판단할 수 없습니다.';
 const normalize = value => String(value ?? '').normalize('NFC').replace(/\s+/gu, ' ').trim();
 const compact = value => normalize(value).toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+// Offsets refer to JavaScript UTF-16 positions in the supplied text. For verification
+// that text is NFC-normalized with runs of whitespace collapsed to a single space.
+const decimal = String.raw`\p{Nd}+(?:[,.，．]\p{Nd}+)*`;
+const magnitude = String.raw`[십백천만억조]+(?=\s*(?:\p{Nd}|원|달러|건|명|개|톤|$)|[.,;:()\s])`;
+const currency = String.raw`(?:원|달러|퍼센트|[%％])(?=$|[^\p{L}\p{N}]|[이가은는을를의에만씩당으로])`;
+const articleNumber = `제\\s*(${decimal})(?=\\s*조)`;
+const numberExpression = new RegExp(`${articleNumber}|[+＋−－-]?${decimal}(?:\\s*${magnitude}(?:\\s*${decimal})?)*(?:\\s*${currency})?`, 'gu');
+
+function numericSpans(text) {
+  return Array.from(text.matchAll(numberExpression), match => {
+    const end = match.index + match[0].length;
+    // "제12조 3항" refers to two distinct legal provisions, even though 조 is also a monetary scale.
+    if (match[1]) return { start: end - match[1].length, end };
+    // A dash between digits, as in a year range, does not give the latter year a negative sign.
+    const isRange = /^[-－−]/u.test(match[0]) && /\p{Nd}/u.test(text[match.index - 1] ?? '');
+    return { start: match.index + (isRange ? 1 : 0), end };
+  });
+}
+
+export function locateQuote(text, quote) {
+  const spans = numericSpans(text);
+  let index = text.indexOf(quote);
+  if (!quote || index < 0) return {error:'quote_not_in_original'};
+  while (index >= 0) {
+    const end = index + quote.length;
+    const cutsNumber = spans.some(span =>
+      (span.start < index && index < span.end) || (span.start < end && end < span.end));
+    if (!cutsNumber) return {start:index, end};
+    index = text.indexOf(quote, index + 1);
+  }
+  return {error:'quote_cuts_numeric_expression'};
+}
+
+export function excerptBounds(text, start, end, spans = numericSpans(text)) {
+  for (const span of spans) {
+    if (span.start < start && start < span.end) start = span.end;
+    if (span.start < end && end < span.end) end = span.start;
+  }
+  if (/[\uDC00-\uDFFF]/u.test(text[start] ?? '')) start++;
+  if (/[\uD800-\uDBFF]/u.test(text[end-1] ?? '')) end--;
+  return {start, end:Math.max(start,end)};
+}
+
+export function boundedExcerpt(text, start, end, spans) {
+  const bounds = excerptBounds(text,start,end,spans);
+  return text.slice(bounds.start, bounds.end).trim();
+}
 const generalWords = new Set(('내가 저는 제가 저희 우리 해당 업무 경우 관련 사안 처리 내용 사업 감사 감사정보 감사결과 감사사례 사례 지적 질문 ' +
   '걸릴까 걸리는지 걸리나 걸릴까요 봐줘 봐주세요 알려줘 알려주세요 확인 확인해줘 찾아줘 주세요 있는지 있을까 어떻게 이런 이거 했는데 했어 했으면 했어요 했습니다 ' +
   '문제 위험 성남 성남시 성남시청 기관 부서 직원 담당자 대상 당시 진행 대하여 관하여 대한 부적정 소홀 ' +
   '자료 문서 검토 검토해 처리 제출 부탁 부탁해 한번 괜찮은지 정상적 정상적으로 같은 해당 업체 건가요 바랍니다 조금 이게').split(/\s+/u));
 const requestVerb = /^(?:(?:확인|처리|검토|진행|판단|문의|작성)(?:해|하|했|할|한|됩|되|됐|된|될|해야|받)|걸리|걸릴|걸렸|봐주|봐달|봐야|있나요|있을지|있을까요|없을지|어떤지)/u;
+const unspecifiedSubject = /^(?:이|그|저)?(?:건|것|일)(?:도|만|까지|에서|을|이|은|은요|으로|인가요)?$/u;
 const splitPurchase = ['분할구매', '구매분할', '분할계약', '분할수의계약', '단일물품분할'];
 // Expressions people use in questions alongside terminology used in Korean audit findings.
 const expressions = [
@@ -35,7 +83,7 @@ const expressions = [
 function keywords(query) {
   const terms = new Set();
   for (const token of normalize(query).toLowerCase().match(/[가-힣a-z0-9]{2,}/gu) ?? []) {
-    if (requestVerb.test(token)) continue;
+    if (requestVerb.test(token) || unspecifiedSubject.test(token)) continue;
     const stem = token.replace(/(?:에서는|으로부터|에게서|에서|으로는|으로|하고|부터|까지|에는|에도|이나|이나요|이라면|처럼|하였는데|했는데|했습니다|했어요|했어|을|를|은|는|에|와|과|로|도|의|만|가)$/u, '');
     const word = stem.length >= 2 ? stem : token;
     if (!generalWords.has(token) && !generalWords.has(word) && !/^\d+(?:년|월|일)?$/u.test(word)) terms.add(word);
@@ -63,11 +111,18 @@ function matchWeight(text, profile) {
 function lexicalCandidate(row, profile) {
   const headingWeight = matchWeight(row.heading, profile);
   const bodyWeight = matchWeight(row.body, profile);
-  if (!headingWeight && profile.terms.length > 1) {
-    const anchors = profile.terms.filter(word => row.body.includes(word));
-    const hasExpression = profile.groups.some(group => group.some(word => row.body.includes(word)));
-    // Short incidental words such as 관측 inside a long, unrelated question do not establish a comparable case.
-    if (!hasExpression && anchors.length < 2 && !anchors.some(word => word.length >= 4)) return 0;
+  if ((!headingWeight && profile.terms.length > 1) || profile.terms.length >= 3) {
+    const appears = word => row.heading.includes(word) || row.body.includes(word);
+    const anchors = profile.terms.filter(appears);
+    const knownTopic = profile.groups.some(group => group.some(appears));
+    // For longer questions a lone short homonym, even in a title, is insufficient.
+    // Direct title lookups such as "진동" and longer, specific anchors remain searchable.
+    const minimumLength = headingWeight ? 3 : 4;
+    if (!knownTopic && anchors.length < 2 && !anchors.some(word => word.length >= minimumLength)) return 0;
+    // Common short words can appear together in incidental prose. Require coverage
+    // of at least a third of the query when they are the only evidence in the body.
+    if (!headingWeight && !knownTopic && anchors.every(word => word.length === 2) &&
+        anchors.length * 3 < profile.terms.length) return 0;
   }
   return 3 * headingWeight + bodyWeight;
 }
@@ -90,6 +145,7 @@ function caseSlice(item, location, page, owners) {
 // Return an exact contiguous passage. Keeping the original whitespace permits direct verification.
 function passage(text, profile) {
   if (text.length <= 520) return { quote: text.trim(), score: matchWeight(compact(text), profile) };
+  const spans = numericSpans(text);
   let best = null;
   let start = 0;
   while (start < text.length) {
@@ -98,7 +154,7 @@ function passage(text, profile) {
       const breakAt = Math.max(text.lastIndexOf('\n', end), text.lastIndexOf('. ', end));
       if (breakAt >= start + 220) end = breakAt + 1;
     }
-    const quote = text.slice(start, end).trim();
+    const quote = boundedExcerpt(text, start, end, spans);
     const score = matchWeight(compact(quote), profile);
     if (!best || score > best.score) best = { quote, score };
     if (end === text.length) break;
@@ -195,7 +251,8 @@ export async function createAuditCore({ loadSet, ranker, readSource }) {
         const excerpts = item.locations.flatMap(location => {
           const text = caseSlice(item, location, pages.get(item.source_id)[location], owners);
           if (!text || compact(text).length < 12) return [];
-          return [{ location, ...passage(text, profile) }];
+          const found = passage(text, profile);
+          return compact(found.quote).length >= 10 ? [{location, ...found}] : [];
         }).sort((a, b) => b.score - a.score).slice(0, 2);
         if (!excerpts.length) continue;
         matches.push({
@@ -210,6 +267,10 @@ export async function createAuditCore({ loadSet, ranker, readSource }) {
       eligible_cases: eligible.length, requires_verification: true, semantic_used: semanticUsed,
       retrieval_method: semanticUsed ? 'Korean lexical + audit terminology + potion cosine reranking' : 'Korean lexical + audit terminology',
       assessment: matches.length ? '유사 사례 후보입니다. 당사자 업무에 적용할 사실관계와 당시 기준을 대조해야 합니다.' : noMatch,
+      ...(matches.length && /계약/.test(queryText) && /금액|보증|확약|면제|이하|이상|미만|초과|원/.test(queryText) ? {
+        comparison_checks: ['계약 체결일에 해당 기관이 적용한 규정의 시행본과 예외 조항을 확인하세요.',
+          '실제 계약금액과 당시 기준의 이상·이하·초과·미만을 구분하고, 계약서와 보증 또는 면제 증빙을 대조하세요.'],
+      } : {}),
       next_action: matches.length ? 'get_audit_original로 지적 사실과 조치 전체를 읽고, 답변 직전에 verify_audit_evidence로 최종 인용과 원문 문맥을 검증하세요.' : '조회 범위와 미확인 사항을 명시하세요.',
     };
   }
@@ -259,8 +320,10 @@ export async function createAuditCore({ loadSet, ranker, readSource }) {
     if (result.verified && location) result.locations = result.locations.filter(row => row.location === location);
     if (result.verified && focus !== undefined) {
       const target = typeof focus === 'string' ? normalize(focus) : '';
-      if (!target || !result.locations.some(row => normalize(row.text).includes(target))) {
-        return { verified: false, error: 'focus_not_in_original' };
+      const matches = result.locations.map(row => locateQuote(normalize(row.text), target));
+      if (!matches.some(match => !match.error)) {
+        const cutsNumber = matches.some(match => match.error === 'quote_cuts_numeric_expression');
+        return { verified: false, error: cutsNumber ? 'focus_cuts_numeric_expression' : 'focus_not_in_original' };
       }
     }
     return result;
@@ -283,12 +346,15 @@ export async function createAuditCore({ loadSet, ranker, readSource }) {
       const quote = typeof entry.quote === 'string' ? normalize(entry.quote) : '';
       if (!quote || compact(quote).length < 10 || quote.length > 4000) return { verified: false, error: 'invalid_quote' };
       const whole = normalize(loc.text);
-      const offset = whole.indexOf(quote);
-      if (offset < 0) return { verified: false, error: 'quote_not_in_original' };
-      const context = whole.slice(Math.max(0, offset - 500), Math.min(whole.length, offset + quote.length + 500));
+      const position = locateQuote(whole, quote);
+      if (position.error) return { verified: false, error: position.error };
+      const bounds = excerptBounds(whole, Math.max(0, position.start - 500), Math.min(whole.length, position.end + 500));
+      const context = whole.slice(bounds.start, bounds.end);
       return {
         verified: true, case_id: item.case_id, title: item.title, source_id: item.source_id, source_url: item.source_url,
         location: loc.location, quote, context, sha256: item.sha256, case_locations: item.locations.map(row => row.location),
+        quote_position: { ...position, unit:'utf16', text:'nfc_whitespace_collapsed' },
+        quote_start_in_context: position.start - bounds.start,
       };
     });
     const verified = findings.every(entry => entry.verified);

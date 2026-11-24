@@ -1,0 +1,202 @@
+[
+  {
+    "id": "R01",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2642",
+        "category": "일반행정",
+        "agency": "분당구청",
+        "year": 2019,
+        "location": "html:body",
+        "quote": "생년월일 기재란에 표기 된 주민등록번호를 그대로 보관",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2642"
+      }
+    ]
+  },
+  {
+    "id": "R02",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4819",
+        "category": "예산/회계",
+        "agency": "본청",
+        "year": 2025,
+        "location": "html:body",
+        "quote": "소득세‧지방소득세를 납부하도록 ‘시정’ 요구",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4819"
+      }
+    ]
+  },
+  {
+    "id": "R03",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2528",
+        "category": "건설/산업",
+        "agency": "중원구청",
+        "year": 2019,
+        "location": "html:body",
+        "quote": "전문 인력 및 장비 수급이 원활하지 못하다는 사유로",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2528"
+      }
+    ]
+  },
+  {
+    "id": "R04",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2448",
+        "category": "계약",
+        "agency": "성남도시개발공사",
+        "year": 2019,
+        "location": "html:body",
+        "quote": "책임보험을 가입하지 않고 그 증서를 제출하지 않았음에도",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2448"
+      }
+    ]
+  },
+  {
+    "id": "R05",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-1998",
+        "category": "재산관리",
+        "agency": "푸른도시사업소",
+        "year": 2017,
+        "location": "html:body",
+        "quote": "공유재산 사용료 체납액에 대한 연체료 부과관리를 소홀히 함",
+        "source_url": "https://www.seongnam.go.kr/pm030305/1998"
+      }
+    ]
+  },
+  {
+    "id": "R06",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-4760",
+        "category": "민간위탁/지방보조",
+        "agency": "본청",
+        "year": 2025,
+        "location": "html:body",
+        "quote": "인건비성 사업, 물가 상승, 단가 조정 및 참가인원 증가 등을 사유로",
+        "source_url": "https://www.seongnam.go.kr/pm030305/4760"
+      }
+    ]
+  },
+  {
+    "id": "R07",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2618",
+        "category": "사회복지",
+        "agency": "분당구청",
+        "year": 2019,
+        "location": "html:body",
+        "quote": "보장비용 징수 부과 및 통지 등의 조치를 소홀히 한 사실이 있음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2618"
+      }
+    ]
+  },
+  {
+    "id": "R08",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2214",
+        "category": "주택/건축",
+        "agency": "수정구청",
+        "year": 2018,
+        "location": "html:body",
+        "quote": "이행강제금 부과 후 2년 이상 경과하였음에도 이행강제금을 재부과하지 않음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2214"
+      }
+    ]
+  },
+  {
+    "id": "R09",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-3704",
+        "category": "정보/통신",
+        "agency": "분당구청",
+        "year": 2022,
+        "location": "html:body",
+        "quote": "영상정보보호 책임자(관리책임자 및 접근권한자) 미지정",
+        "source_url": "https://www.seongnam.go.kr/pm030305/3704"
+      }
+    ]
+  },
+  {
+    "id": "R10",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2796",
+        "category": "지방세",
+        "agency": "수정구청",
+        "year": 2020,
+        "location": "html:body",
+        "quote": "부과·징수하지 않은 사실이 있음",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2796"
+      }
+    ]
+  },
+  {
+    "id": "R11",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2284",
+        "category": "보건/의료",
+        "agency": "중원구보건소",
+        "year": 2018,
+        "location": "html:body",
+        "quote": "위탁검진비용 환수대상자 15개 의료기관에 대하여",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2284"
+      }
+    ]
+  },
+  {
+    "id": "R12",
+    "kind": "positive",
+    "expected": [
+      {
+        "case_id": "city-2457",
+        "category": "도로/교통",
+        "agency": "성남도시개발공사",
+        "year": 2019,
+        "location": "html:body",
+        "quote": "배수로가 퇴적토로 인해 배수기능이 상실되는등",
+        "source_url": "https://www.seongnam.go.kr/pm030305/2457"
+      }
+    ]
+  },
+  {
+    "id": "R13",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "R14",
+    "kind": "underspecified",
+    "expected": []
+  },
+  {
+    "id": "R15",
+    "kind": "out_of_scope",
+    "expected": []
+  },
+  {
+    "id": "R16",
+    "kind": "out_of_scope",
+    "expected": []
+  }
+]

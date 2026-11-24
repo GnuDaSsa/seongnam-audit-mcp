@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto';
 import {gzipSync,gunzipSync} from 'node:zlib';
 import {initEncoder, dimensions} from './semantic-core.mjs';
 import {caseMarkup,caseText} from './hosted-asset.mjs';
+import {cityCorpusHash} from './corpus-identity.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const out = path.join(root, 'dist');
@@ -71,7 +72,7 @@ for (const name of ['common.bin.gz','words.json.gz']) await cp(path.join(root,'m
 const vec = gzipSync(Buffer.from(vectors.buffer));
 modelHashes['vectors.bin.gz'] = hash(vec);
 await writeFile(path.join(outModel,'vectors.bin.gz'),vec);
-const packed = {catalog:pack(sets), originals, entities, modelHashes};
+const packed = {catalog:pack(sets), originals, entities, modelHashes, corpusHash:cityCorpusHash(city,pages)};
 const entry = (await read('hosted.mjs')).toString('utf8').replace('/*__HOSTED_DATA__*/null',JSON.stringify(packed));
 await esbuild.build({stdin:{contents:entry,resolveDir:root,sourcefile:'hosted.mjs'},bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:path.join(out,'server/index.js')});
 await cp(path.join(root,'index.html'),path.join(out,'client/index.html'));
