@@ -71,6 +71,7 @@ python pipeline/prepare_model.py ../seongnam-budget-mcp/snapshot/semantic
 | `npm run test:protocol` | 공식 SDK 구·신버전과 HTTP 요청을 검사한다. `AUDIT_PROTOCOL_URL`을 설정하면 공식 SDK가 지정된 원격 서버를 호출한다. |
 | `node benchmark.mjs --mode live --suite reserve-v1 --output reserve-results.json` | 공개 서버에서 16개 예비 문항의 첫 검색 순위, 답변 보류, 공식 원문과 걸린 시간을 기록한다. 기본 평가군 40문항은 `--suite reserve-v1`을 생략해 실행한다. |
 | `node answer-benchmark.mjs --output answer-results.json` | 첫 한국어 답변의 채점표를 확인하고 운영 원문을 다시 대조한다. 설정한 정확성·유용성 기준에 미달하면 종료 코드 1을 반환한다. |
+| `node benchmark.mjs --mode live --suite final-v1` · `node answer-benchmark.mjs --suite final-v1` | 최종 수정 후 새로 동결한 검색 14문항과 한국어 답변 6개 대화의 기준 충족 여부를 각각 확인한다. |
 
 1.1.0의 실측 성적과 예산 MCP에서 이어받은 검사 범위를 공개했다. GitHub Actions의 ‘공개 MCP 벤치마크’는 수동 실행 시 운영 주소를 호출하고 문항별 보고서를 보관한다. [운영 검증 결과](docs/VALIDATION.md) · [검색 평가와 최초 실패 기록](docs/BENCHMARK.md) · [한국어 답변 채점](docs/ANSWERS.md) · [참고한 MCP 저장소와 스킬](docs/MCP_RESEARCH.md)
 

@@ -11,31 +11,39 @@ test('frozen questions and answers have disjoint case IDs and the declared split
   assert.ok(questions.every(q=>!('expected' in q) && !('case_id' in q) && !('quote' in q)));
 });
 
-test('reserve questions and gold sources are disjoint from first-run, developer and answer fixtures', async () => {
-  const [first, reserve, developer, answers, answerQuestions, history] = await Promise.all([
-    loadSuite(), loadSuite('reserve-v1'), ...['test-cases.json','benchmarks/answer/key.json','benchmarks/answer/questions.json','benchmarks/run-history.json']
+test('reserve and final suites have fresh questions and gold sources across published fixtures', async () => {
+  const [first, reserve, final, developer, answers, answerQuestions, history, liveChecks] = await Promise.all([
+    loadSuite(), loadSuite('reserve-v1'), loadSuite('final-v1'), ...['test-cases.json','benchmarks/answer/key.json','benchmarks/answer/questions.json','benchmarks/run-history.json']
       .map(async file => JSON.parse(await readFile(new URL('../' + file, import.meta.url),'utf8'))),
+    readFile(new URL('../live-check.mjs', import.meta.url),'utf8'),
   ]);
   const priorSources = new Set([
     ...first.judgments.flatMap(row => row.expected.map(source => source.case_id)),
     ...developer.cases.map(row => row.case_id),
     ...answers.cases.flatMap(row => row.acceptable_case_ids ?? []),
+    ...(liveChecks.match(/city-\d+/g) ?? []),
   ]);
   const oldQuestions = new Set([
     ...first.questions.map(row => row.query),
     ...[...developer.cases, ...developer.no_match].map(row => row.query),
     ...answerQuestions.flatMap(row => row.turns),
   ]);
-  for (const row of reserve.questions) {
-    assert.equal(row.split, 'reserve');
-    assert.ok(!oldQuestions.has(row.query));
-    assert.deepEqual(Object.keys(row).sort(), ['filters','id','query','split']);
-  }
-  for (const row of reserve.judgments) {
-    for (const source of row.expected) assert.ok(!priorSources.has(source.case_id),'reused source '+source.case_id);
+  for (const [split, suite] of [['reserve', reserve], ['final', final]]) {
+    for (const row of suite.questions) {
+      assert.equal(row.split, split);
+      assert.ok(!oldQuestions.has(row.query), 'reused question ' + row.id);
+      oldQuestions.add(row.query);
+      assert.deepEqual(Object.keys(row).sort(), ['filters','id','query','split']);
+    }
+    for (const row of suite.judgments) {
+      for (const source of row.expected) {
+        assert.ok(!priorSources.has(source.case_id), 'reused source ' + source.case_id);
+        priorSources.add(source.case_id);
+      }
+    }
+    assert.deepEqual(suite.config.thresholds, first.config.thresholds, split + ' uses the preregistered minimums');
   }
   assert.deepEqual(history.reserveFirstRun.fixtureSha256, reserve.config.hashes);
-  assert.deepEqual(reserve.config.thresholds,first.config.thresholds,'reserve uses the preregistered minimums');
 });
 
 test('top-k hit, reciprocal rank and abstention use separate denominators; misses count as zero',()=>{

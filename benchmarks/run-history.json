@@ -707,5 +707,146 @@
         }
       }
     }
-  ]
+  ],
+  "finalIndependentFirstRun": {
+    "benchmark": "city-retrieval-final-v1",
+    "target": "local-city",
+    "recordedAt": "2026-11-24T15:41:25.723Z",
+    "searchableCases": 1717,
+    "corpusSha256": "7cb4a32048bdaa2d6b25a3f7f0f95f98a499bb24625fbbff9f465df6c6fc7380",
+    "fixtureSha256": {
+      "questions.json": "bebbe47570658407da3aec3ad2dd77e9aa87235f652f611b9ee5c7bdd6290a53",
+      "judgments.json": "393adeec879bffc0978ef0402bbebcec3916697c27feed7af0e612522ff3dc69"
+    },
+    "evaluatorSha256": "1fe1d1e86c9f5bfe64e1c90036761b4f1d11eea1d6273eecf1e1b7ac816e0f70",
+    "localRetrievalCodeSha256": "d87bd97ff66d730fd5a89c6baeb4d189968d26dc666e7be01ad260a21201c3e1",
+    "passed": false,
+    "fullReportFile": "audit-final-independent.json",
+    "fullReportSha256": "9c6e075de71c9ca70becdf956b12361d63896360853b41670955677ad35b8a8c",
+    "failedGates": [
+      {
+        "mode": "hybrid",
+        "split": "final",
+        "metric": "abstention",
+        "minimum": 1,
+        "actual": 0.75,
+        "passed": false
+      }
+    ],
+    "metrics": {
+      "lexical": {
+        "count": 14,
+        "positive": 10,
+        "negative": 4,
+        "correctTop1": 7,
+        "correctTop3": 8,
+        "correctTop5": 9,
+        "correctAbstentions": 3,
+        "verifiedSources": 10,
+        "hitAt1": 0.7,
+        "hitAt3": 0.8,
+        "hitAt5": 0.9,
+        "mrrAt5": 0.775,
+        "abstention": 0.75,
+        "sourceVerification": 1,
+        "researchLatencyMs": {
+          "first": 63.9,
+          "remaining": 13,
+          "p50": 11.4,
+          "p95": 41.3
+        }
+      },
+      "hybrid": {
+        "count": 14,
+        "positive": 10,
+        "negative": 4,
+        "correctTop1": 8,
+        "correctTop3": 9,
+        "correctTop5": 9,
+        "correctAbstentions": 3,
+        "verifiedSources": 10,
+        "hitAt1": 0.8,
+        "hitAt3": 0.9,
+        "hitAt5": 0.9,
+        "mrrAt5": 0.8333333333333333,
+        "abstention": 0.75,
+        "sourceVerification": 1,
+        "researchLatencyMs": {
+          "first": 151.3,
+          "remaining": 13,
+          "p50": 19.4,
+          "p95": 213.4
+        }
+      }
+    },
+    "misses": {
+      "lexical": [
+        {
+          "id": "F01",
+          "kind": "positive",
+          "rank": null,
+          "returned": [
+            "city-4723",
+            "city-4727",
+            "city-4119",
+            "city-4653",
+            "city-4654"
+          ],
+          "abstained": false,
+          "sourceVerified": true
+        },
+        {
+          "id": "F03",
+          "kind": "positive",
+          "rank": 4,
+          "returned": [
+            "city-2427",
+            "city-4858",
+            "city-4767",
+            "city-2882",
+            "city-4593"
+          ],
+          "abstained": false,
+          "sourceVerified": true
+        },
+        {
+          "id": "F12",
+          "kind": "underspecified",
+          "rank": null,
+          "returned": [
+            "city-4762"
+          ],
+          "abstained": false
+        }
+      ],
+      "hybrid": [
+        {
+          "id": "F01",
+          "kind": "positive",
+          "rank": null,
+          "returned": [
+            "city-4653",
+            "city-3108",
+            "city-4654",
+            "city-1932",
+            "city-4727"
+          ],
+          "abstained": false,
+          "sourceVerified": true
+        },
+        {
+          "id": "F12",
+          "kind": "underspecified",
+          "rank": null,
+          "returned": [
+            "city-4762"
+          ],
+          "abstained": false
+        }
+      ]
+    },
+    "knownCaseMissedAt5": {
+      "F01": "city-2382"
+    }
+  }
 }
